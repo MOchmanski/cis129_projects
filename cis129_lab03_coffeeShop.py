@@ -104,8 +104,6 @@ Java Nice Day Taco Truck & Cafe Receipt
 ---------
 Total: $ {total_cost}
 ***************************************
-
-***************************************
 Have a nice day! Please come again :)
 '''
     return receipt

@@ -3,7 +3,7 @@ cis129_lab03_coffeeShop.py
 Description: This program intakes the number of muffins and cups of coffee
     that a customer will buy and returns a simple receipt of the total bill.
 Author: Michael Ochmanski
-Version: 1.0
+Version: 1.3
 Created: 2/13/2025
 Last Modified: 2/13/2025
 '''
@@ -21,7 +21,12 @@ def coffee_shop_order():
     '''
     coffee_count = input("How many cups of coffee would you like?")
     muffin_count = input("How many muffins do you want to buy?")
-    item_count = (coffee_count, muffin_count)  # function only returns one item
+    taco_count = input("How many tacos would you like to buy?")
+    horchata_count = input(
+        "Last but certainly not least, how much horchata would you like?"
+        )
+    # redundant variable to insure function only returns one item
+    item_count = (coffee_count, muffin_count, taco_count, horchata_count)  
     return item_count
 
 def bill_calculation(item_count):
@@ -36,14 +41,20 @@ def bill_calculation(item_count):
     receipt_items -- a list containing the values of items that will be placed
     on the receipt
     '''
+    # converting to float for price calculation
     coffee_count = float(item_count[0])
     muffin_count = float(item_count[1])
-    coffee_price = coffee_count * 5 
-    muffin_price = muffin_count * 4
-    subtotal = coffee_price + muffin_price
-    tax = round(subtotal * 0.06, 2)
+    taco_count = float(item_count[2])
+    horchata_count = float(item_count[3])
+    coffee_price = coffee_count * 3.5 
+    muffin_price = muffin_count * 2
+    taco_price = taco_count * 2.5
+    horchata_price = horchata_count * 3
+    subtotal = coffee_price + muffin_price + taco_price + horchata_price
+    tax = round(subtotal * 0.06, 2) # round to fit monetary writing conventions
     total_cost = subtotal + tax
-    receipt_items = (coffee_price, muffin_price, tax, total_cost)
+    receipt_items = (coffee_price, muffin_price, taco_price, 
+                     horchata_price, tax, total_cost)
     return receipt_items
 
 def print_receipt(item_count, receipt_items):
@@ -62,27 +73,41 @@ def print_receipt(item_count, receipt_items):
     '''
     coffee_count = item_count[0]
     muffin_count = item_count[1]
+    taco_count = item_count[2]
+    horchata_count = item_count[3]
     coffee_price = format(receipt_items[0], '.2f')  # mimics style of menu cost
     muffin_price = format(receipt_items[1], '.2f')
-    tax = round(receipt_items[2], 2)
-    total_cost = receipt_items[3]
+    taco_price = format(receipt_items[2], '.2f')
+    horchata_price = format(receipt_items[3], '.2f')
+    # as a precaution of the tax amount being divisble by 10
+    tax = format(receipt_items[4], '.2f')
+    total_cost = format(receipt_items[5], '.2f')
     receipt = f'''***************************************
-    My Coffee and Muffin Shop
-    Number of coffees bought?
-    {coffee_count}
-    Number of muffins bought?
-    {muffin_count}
-    ***************************************
+Welcome to Java Nice Day Taco Truck & Cafe!
+Number of coffees bought
+{coffee_count}
+Number of muffins bought
+{muffin_count}
+Number of tacos bought
+{taco_count}
+Number of horchata bought
+{horchata_count}
+***************************************
 
-    ***************************************
-    My Coffee and Muffin Shop Receipt
-    {coffee_count} Coffee at $5 each: $ {coffee_price}
-    2 Muffins at $4 each: $ {muffin_price}
-    6% tax: $ {tax}
-    ---------
-    Total: $ {total_cost}
-    ***************************************
-    '''
+***************************************
+Java Nice Day Taco Truck & Cafe Receipt
+{coffee_count} Coffee at $3.50 each: $ {coffee_price}
+{muffin_count} Muffins at $2.00 each: $ {muffin_price}
+{taco_count} Tacos at $2.50 each: $ {taco_price}
+{horchata_count} Horchata at $3.00 each: $ {horchata_price}
+6% tax: $ {tax}
+---------
+Total: $ {total_cost}
+***************************************
+
+***************************************
+Have a nice day! Please come again :)
+'''
     return receipt
 
 def main():

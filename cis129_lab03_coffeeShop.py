@@ -3,7 +3,7 @@ cis129_lab03_coffeeShop.py
 Description: This program intakes the number of muffins and cups of coffee
     that a customer will buy and returns a simple receipt of the total bill.
 Author: Michael Ochmanski
-Version: 1.0
+Version: 1.2
 Created: 2/13/2025
 Last Modified: 2/13/2025
 '''
@@ -67,22 +67,22 @@ def print_receipt(item_count, receipt_items):
     tax = round(receipt_items[2], 2)
     total_cost = receipt_items[3]
     receipt = f'''***************************************
-    My Coffee and Muffin Shop
-    Number of coffees bought?
-    {coffee_count}
-    Number of muffins bought?
-    {muffin_count}
-    ***************************************
+My Coffee and Muffin Shop
+Number of coffees bought?
+{coffee_count}
+Number of muffins bought?
+{muffin_count}
+***************************************
 
-    ***************************************
-    My Coffee and Muffin Shop Receipt
-    {coffee_count} Coffee at $5 each: $ {coffee_price}
-    2 Muffins at $4 each: $ {muffin_price}
-    6% tax: $ {tax}
-    ---------
-    Total: $ {total_cost}
-    ***************************************
-    '''
+***************************************
+My Coffee and Muffin Shop Receipt
+{coffee_count} Coffee at $5 each: $ {coffee_price}
+{muffin_count} Muffins at $4 each: $ {muffin_price}
+6% tax: $ {tax}
+---------
+Total: $ {total_cost}
+***************************************
+'''
     return receipt
 
 def main():

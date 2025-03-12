@@ -1,5 +1,5 @@
 '''
-CIS129_michaelOchmanski_lab06
+cis129_michaelOchmanski_lab06
 Author: Michael Ochmanski
 Version 1.0
 Created 3/11/2025

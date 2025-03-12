@@ -1,5 +1,5 @@
 '''
-CIS129_MichaelOchmanski_Lab05.py
+cis129_michaelOchmanski_Lab05.py
 Author: Michael Ochmanski
 Version 1.0
 Created: 3/6/2025
